@@ -12,6 +12,13 @@ app.use(cors())
 const consST = process.env.DATABASE_URL
 const pool = new pg.Pool({ connectionString: consST })
 
+app.get("/", (req, res) => {
+  res.send({
+    message: "Page home funcionando, 20:22, ESSE AQUI",
+    port,
+  })
+})
+
 //Cadastrar produto
 app.post('/products', (req, res) => {
   pool.connect((err, client) => {
