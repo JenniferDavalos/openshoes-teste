@@ -10,12 +10,15 @@ app.use(express.json())
 app.use(cors())
 
 const consST = process.env.DATABASE_URL
-const pool = new pg.Pool({ connectionString: consST })
+const pool = new pg.Pool({
+  connectionString: consST,
+  ssl: { rejectUnauthorized: false }
+})
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
   res.send({
-    message: "Page home funcionando, 20:22, ESSE AQUI",
-    port,
+    message: 'Page home funcionando, 20:22, ESSE AQUI',
+    port
   })
 })
 
